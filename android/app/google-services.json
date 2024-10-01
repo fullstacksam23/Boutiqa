@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "211278584844",
+    "project_id": "boutiqa-59b91",
+    "storage_bucket": "boutiqa-59b91.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:211278584844:android:ed554a71703ed043fde229",
+        "android_client_info": {
+          "package_name": "com.example.boutiqa"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBs2iqCr2mxysGbOAzifDPt3cTpwD44aUE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
