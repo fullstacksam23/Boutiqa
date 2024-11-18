@@ -27,7 +27,7 @@ class _UserActivityState extends State<UserActivity> {
               width: 400,
               child: ElevatedButton(
                 onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => UserOrdersScreen()),);
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => OrderHistoryPage()),);
                 },
                 child: Text("Your Orders", style: TextStyle(color: Colors.black, fontSize: 20),),
                 style: ElevatedButton.styleFrom(
