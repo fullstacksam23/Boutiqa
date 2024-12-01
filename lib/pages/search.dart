@@ -48,11 +48,11 @@ class SearchPage extends StatelessWidget {
                       CircleAvatar(
                         radius: 40,
                         backgroundImage: NetworkImage(
-                          'https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/5_avatar-128.png', // Replace with designer image URL
+                          'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F220453%2Fpexels-photo-220453.jpeg%3Fcs%3Dsrgb%26dl%3Dpexels-pixabay-220453.jpg%26fm%3Djpg&f=1&nofb=1&ipt=3ea9ae983ceb236c28fd2ff39ed84b1e2bf290b2e7521ca3635497c3a73c7e5c&ipo=images', // Replace with designer image URL
                         ),
                       ),
                       Text(
-                        "Designer 1",
+                        "James",
                         style: TextStyle(fontSize: 12.0),
                       ),
                     ],
@@ -66,11 +66,11 @@ class SearchPage extends StatelessWidget {
                       CircleAvatar(
                         radius: 40,
                         backgroundImage: NetworkImage(
-                          'https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/4_avatar-128.png', // Replace with designer image URL
+                          'https://writestylesonline.com/wp-content/uploads/2018/11/Three-Statistics-That-Will-Make-You-Rethink-Your-Professional-Profile-Picture-1024x1024.jpg', // Replace with designer image URL
                         ),
                       ),
                       Text(
-                        "Designer 2",
+                        "Paula",
                         style: TextStyle(fontSize: 12.0),
                       ),
                     ],
@@ -84,12 +84,12 @@ class SearchPage extends StatelessWidget {
                       CircleAvatar(
                         radius: 40,
                         backgroundImage: NetworkImage(
-                          'https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/10_avatar-512.png', // Replace with designer image URL
+                          'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.meNv2L040GZISp6ZUFXqXQHaE8%26pid%3DApi&f=1&ipt=2530ac0d398af97a20adb2afc68b08fe3a902b3a68613f478e4c8fe84360a1b4&ipo=images', // Replace with designer image URL
                         ),
                       ),
 
                       Text(
-                        "Designer 3",
+                        "Rahul",
                         style: TextStyle(fontSize: 12.0),
                       ),
                     ],
@@ -103,11 +103,11 @@ class SearchPage extends StatelessWidget {
                       CircleAvatar(
                         radius: 40,
                         backgroundImage: NetworkImage(
-                          'https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/1_avatar-512.png', // Replace with designer image URL
+                          'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.MJp3QKUIQkmwXPc9lU8mTAHaLH%26pid%3DApi&f=1&ipt=937349eb8751eac420ee451c07f2f11a04a96218cebb1d4d1fea1bc884fef83b&ipo=images', // Replace with designer image URL
                         ),
                       ),
                       Text(
-                        "Designer 4",
+                        "Rajesh",
                         style: TextStyle(fontSize: 12.0),
                       ),
                     ],
@@ -121,11 +121,11 @@ class SearchPage extends StatelessWidget {
                       CircleAvatar(
                         radius: 40,
                         backgroundImage: NetworkImage(
-                          'https://cdn1.iconfinder.com/data/icons/user-pictures/101/malecostume-512.png', // Replace with designer image URL
+                          'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.Wwkj6mz7ZUkF8pBMY7UvIwHaHa%26pid%3DApi&f=1&ipt=18821e6e0481097c7de0f35d500f73e8aebb79ae68523e209e1517e816b7d31f&ipo=images', // Replace with designer image URL
                         ),
                       ),
                       Text(
-                        "Designer 5",
+                        "Sam",
                         style: TextStyle(fontSize: 12.0),
                       ),
                     ],

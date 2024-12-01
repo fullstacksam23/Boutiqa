@@ -22,82 +22,85 @@ class UpdateProfilePage extends StatelessWidget {
               ),
             ),
             // Main content on top of the gradient
-            SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // Profile Picture with Edit Icon
-                    Center(
-                      child: Stack(
-                        alignment: Alignment.bottomRight,
-                        children: [
-                          CircleAvatar(
-                            radius: 50,
-                            backgroundColor: Colors.brown.shade100,
-                            child: ClipOval(
-                              child: Image.network(
-                                'https://thumbs.dreamstime.com/z/female-avatar-profile-picture-vector-female-avatar-profile-picture-vector-102690279.jpg?w=768', // Replace with actual image URL
-                                fit: BoxFit.cover,
-                                width: 100,
-                                height: 100,
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 80, 0, 0),
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Profile Picture with Edit Icon
+                      Center(
+                        child: Stack(
+                          alignment: Alignment.bottomRight,
+                          children: [
+                            CircleAvatar(
+                              radius: 50,
+                              backgroundColor: Colors.brown.shade100,
+                              child: ClipOval(
+                                child: Image.network(
+                                  'https://thumbs.dreamstime.com/z/female-avatar-profile-picture-vector-female-avatar-profile-picture-vector-102690279.jpg?w=768', // Replace with actual image URL
+                                  fit: BoxFit.cover,
+                                  width: 100,
+                                  height: 100,
+                                ),
                               ),
                             ),
+                            CircleAvatar(
+                              radius: 15,
+                              backgroundColor: Colors.white,
+                              child: Icon(
+                                Icons.edit,
+                                size: 16,
+                                color: Colors.brown,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 20),
+
+                      // Input Fields with "Update" Button
+                      InputFieldWithUpdate(label: 'Name'),
+                      SizedBox(height: 15),
+                      InputFieldWithUpdate(label: 'Mobile'),
+                      SizedBox(height: 15),
+                      InputFieldWithUpdate(label: 'Email'),
+                      SizedBox(height: 15),
+                      InputFieldWithUpdate(label: 'Date of Birth'),
+                      SizedBox(height: 15),
+                      InputFieldWithUpdate(label: 'Gender'),
+
+                      SizedBox(height: 30),
+
+                      // Update Profile Button
+                      Center(
+                        child: ElevatedButton(
+                          onPressed: () {
+                            // Add update profile logic here
+                          },
+                          child: Text(
+                            'Update Profile',
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white), // Text color changed to white
                           ),
-                          CircleAvatar(
-                            radius: 15,
-                            backgroundColor: Colors.white,
-                            child: Icon(
-                              Icons.edit,
-                              size: 16,
-                              color: Colors.brown,
+                          style: ElevatedButton.styleFrom(
+                            padding:
+                            EdgeInsets.symmetric(vertical: 16, horizontal: 50),
+                            backgroundColor: Colors.brown,
+                            elevation: 8, // Elevation for shadow effect
+                            shadowColor: Colors.brown.shade300, // Shadow color
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30),
                             ),
                           ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 20),
-
-                    // Input Fields with "Update" Button
-                    InputFieldWithUpdate(label: 'Name'),
-                    SizedBox(height: 15),
-                    InputFieldWithUpdate(label: 'Mobile'),
-                    SizedBox(height: 15),
-                    InputFieldWithUpdate(label: 'Email'),
-                    SizedBox(height: 15),
-                    InputFieldWithUpdate(label: 'Date of Birth'),
-                    SizedBox(height: 15),
-                    InputFieldWithUpdate(label: 'Gender'),
-
-                    SizedBox(height: 30),
-
-                    // Update Profile Button
-                    Center(
-                      child: ElevatedButton(
-                        onPressed: () {
-                          // Add update profile logic here
-                        },
-                        child: Text(
-                          'Update Profile',
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white), // Text color changed to white
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          padding:
-                          EdgeInsets.symmetric(vertical: 16, horizontal: 50),
-                          backgroundColor: Colors.brown,
-                          elevation: 8, // Elevation for shadow effect
-                          shadowColor: Colors.brown.shade300, // Shadow color
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
-                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),

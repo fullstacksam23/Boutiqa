@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
-
 import "package:flutter/material.dart";
+import "package:boutiqa/pages/designerhome.dart";
+import "package:boutiqa/pages/home.dart";
 
 class Login extends StatefulWidget {
   final Function()? onTap;
@@ -14,6 +15,7 @@ class _LoginState extends State<Login> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   bool _obscurePassword = true;
+  String selectedProfileType = 'user';
   //signin method
   void signUserIn() async {
     // show loading circle
@@ -31,7 +33,20 @@ class _LoginState extends State<Login> {
         email: _usernameController.text,
         password: _passwordController.text,
       );
+      //close the loading dialog
       Navigator.pop(context);
+
+      if (selectedProfileType == 'user') {
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) =>  firstpage()),
+        );// Navigate to user home
+      } else if (selectedProfileType == 'designer') {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) =>  DesignFirstPage()),
+        ); // Navigate to designer home
+      }
     } on FirebaseAuthException catch (e) {
       Navigator.pop(context);
       //WRONG EMAIL
@@ -63,6 +78,30 @@ class _LoginState extends State<Login> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               Image(image: AssetImage("assets/logo.png")),
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: ToggleButtons(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Text('User'),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Text('Designer'),
+                    ),
+                  ],
+                  isSelected: [
+                    selectedProfileType == 'user',
+                    selectedProfileType == 'designer',
+                  ],
+                  onPressed: (int index) {
+                    setState(() {
+                      selectedProfileType = index == 0 ? 'user' : 'designer';
+                    });
+                  },
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: TextField(

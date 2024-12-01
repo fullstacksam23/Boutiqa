@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:boutiqa/pages/userorders.dart';
 import 'package:boutiqa/pages/chat.dart';
 import 'package:boutiqa/pages/edit_profile.dart';
+import 'package:boutiqa/pages/auth_page.dart';
 
 class UserProfile extends StatelessWidget {
   @override
@@ -111,18 +112,7 @@ class UserProfile extends StatelessWidget {
                 SizedBox(height: 30),
 
                 // Favorites and Settings Buttons
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    CircleIconButton(
-                      icon: Icons.settings,
-                      label: 'Settings',
-                      onPressed: () {},
-                      backgroundColor: Color.fromARGB(255, 104, 51, 51),
-                      iconColor: Color.fromARGB(255, 249, 248, 247),
-                    ),
-                  ],
-                ),
+
 
                 SizedBox(height: 30),
 
@@ -161,9 +151,12 @@ class UserProfile extends StatelessWidget {
                 // Logout Button
                 Center(
                   child: ElevatedButton.icon(
-                    onPressed: () {
-                      FirebaseAuth.instance.signOut();
-                      Navigator.pop(context);
+                    onPressed: () async {
+                      await FirebaseAuth.instance.signOut();
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => const AuthPage()),
+                      );
                     },
                     icon: Icon(Icons.logout),
                     label: Text('Logout'),

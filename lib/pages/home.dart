@@ -7,7 +7,7 @@ import 'package:boutiqa/pages/gender.dart';
 import 'package:boutiqa/pages/user_activity.dart';
 import 'package:boutiqa/pages/userprofile.dart';
 import 'package:boutiqa/pages/cart.dart';
-import 'package:flutter/material.dart';
+import "package:boutiqa/pages/bag.dart";
 
 class firstpage extends StatefulWidget {
   @override
@@ -19,7 +19,7 @@ class _firstpageState extends State<firstpage> {
   final List<Widget> _pages = [
     HomeScreen(),
     SearchPage(),
-    CartPage(),
+    BagPage(),
     UserCustomization(),
   ];
 

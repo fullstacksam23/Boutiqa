@@ -1,9 +1,7 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
-import 'package:boutiqa/pages/homepage.dart';
-import "package:boutiqa/pages/home.dart";
-import 'package:boutiqa/pages/designerhome.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SignUp extends StatefulWidget {
   final Function()? onTap;
@@ -16,8 +14,7 @@ class SignUp extends StatefulWidget {
 class _SignUpState extends State<SignUp> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _confirmpasswordController =
-      TextEditingController();
+  final TextEditingController _confirmpasswordController = TextEditingController();
   bool _obscurePassword = true;
 
   // To keep track of user type selection
@@ -29,12 +26,13 @@ class _SignUpState extends State<SignUp> {
         context: context,
         barrierDismissible: false,
         builder: (context) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
+          return const Center(child: CircularProgressIndicator(),);
         });
 
     try {
+      if(_passwordController.text != _confirmpasswordController.text){
+        throw Exception("Passwords don't match");
+      }
       if (_passwordController.text == _confirmpasswordController.text) {
         await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: _usernameController.text,
@@ -47,16 +45,19 @@ class _SignUpState extends State<SignUp> {
         // Based on the selected profile type, navigate to the appropriate page
         if (selectedProfileType == 'user') {
           Navigator.pushReplacementNamed(context, '/userhome');
-        } else if (selectedProfileType == 'designer') {
+        } else{
           Navigator.pushReplacementNamed(context, '/designerhome');
-        }
-      } else {
-        Navigator.pop(context);
-        showErrorMessage();
+        };
       }
-    } on FirebaseAuthException catch (e) {
+      // else {
+      //   Navigator.pop(context);
+      //   print("wrong gmail");
+      //   showErrorMessage();
+      // }
+    } catch (e) {
       Navigator.pop(context);
       //WRONG EMAIL
+      print("wrong email");
       showErrorMessage();
     }
   }
@@ -66,7 +67,7 @@ class _SignUpState extends State<SignUp> {
         context: context,
         builder: (context) {
           return const AlertDialog(
-            backgroundColor: Colors.purple,
+            backgroundColor: Colors.white,
             title: Text('Incorrect details'),
           );
         });
@@ -85,11 +86,6 @@ class _SignUpState extends State<SignUp> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              //const Image(image: AssetImage("assets/logo.png")),
-              // const Text(
-              //   "BOUTIQA",
-              //   style: TextStyle(fontSize: 30),
-              // ),
               const Padding(
                 padding: EdgeInsets.all(4.0),
                 child: Text(
@@ -102,7 +98,7 @@ class _SignUpState extends State<SignUp> {
               ),
               Padding(
                 padding: const EdgeInsets.all(20.0),
-                child: Image(image: AssetImage("assets/signup.png")),
+                child: Image(image: AssetImage("assets/signup.png"), width: 250, height: 250,),
               ),
 
               Padding(
@@ -210,9 +206,9 @@ class _SignUpState extends State<SignUp> {
               ),
               //Text("or", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),),
               Padding(
-                padding: const EdgeInsets.fromLTRB(0, 50, 0, 100),
-                child: GestureDetector(
-                  onTap: widget.onTap,
+                padding: const EdgeInsets.fromLTRB(0, 25, 0, 0),
+                child: TextButton(
+                  onPressed: widget.onTap,
                   child: Text(
                     "Login here",
                     style: TextStyle(color: Colors.deepPurple),
