@@ -57,25 +57,71 @@ logger                            1.0.0
 
 
 <h2>How-to-use</h2>
-<p>Follow these steps to run the project:</br>
-clone: </p>
+<p>Follow these steps to run the Boutiqa project:</p>
 
-  ```terminal 
-  git clone https://github.com/AAC-Open-Source-Pool/Fall-Detection-and-Human-Activity-Recognition
-  ```
-<p>install the required libraries:</p>
+<p>Clone the repository:</p>
+<pre>
+  <code>
+  git clone https://github.com/your-repository/boutiqa
+  </code>
+</pre>
 
-```terminal 
-pip install -r requirements.txt
-```
+<p>Install Flutter and Dart SDK:</p>
+<pre>
+  <code>
+  # Install Flutter
+  https://flutter.dev/docs/get-started/install
 
-<p>Run the detection script:</p>
+  # Install Dart (comes with Flutter)
+  https://dart.dev/get-dart
+  </code>
+</pre>
 
-```terminal 
-python fall.py
-```
-<p>make sure you provide the video input path in code in cap.caputure()</p>
+<p>Install the required dependencies (Flutter packages):</p>
+<pre>
+  <code>
+  flutter pub get
+  </code>
+</pre>
 
+<p>Configure Firebase:</p>
+<ul>
+  <li>Go to <a href="https://console.firebase.google.com/">Firebase Console</a> and create a new project or use an existing one.</li>
+  <li>Follow the instructions to add Firebase to your Flutter project:
+    <ul>
+      <li>Enable Firebase Authentication (for login functionality).</li>
+      <li>Set up Firestore, Firebase Storage, or any other services your app needs.</li>
+      <li>Download the <code>google-services.json</code> for Android and/or <code>GoogleService-Info.plist</code> for iOS, and place them in the appropriate directories of your project.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Run the Boutiqa app:</p>
+<pre>
+  <code>
+  flutter run
+  </code>
+</pre>
+
+<p>Ensure Firebase is properly initialized in your Flutter app. Add this code in <code>main.dart</code>:</p>
+<pre>
+  <code>
+  void main() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform, // Replace with your Firebase config
+    );
+    runApp(BoutiqaApp());
+  }
+  </code>
+</pre>
+
+<p>Note:</p>
+<ul>
+  <li>If you're using Firebase Authentication, set up the login UI (such as Email/Password, Google Sign-In, etc.).</li>
+  <li>Verify your <code>pubspec.yaml</code> file includes the required Firebase libraries like <code>firebase_auth</code>, <code>cloud_firestore</code>, etc.</li>
+  <li>Make sure your emulator or physical device is connected to the internet for Firebase to work properly.</li>
+</ul>
 <h2>Preview</h2>
 <p>Below is an example of the fall detection system in action:</p>
 https://github.com/AAC-Open-Source-Pool/Fall-Detection-and-Human-Activity-Recognition/blob/main/Screenshot%202024-11-17%20123749.png
