@@ -1,4 +1,5 @@
-#BOUTIQA
+# BOUTIQA
+
 <h2>Team Details</h2>
 <b>Team Number: </b> <p>24AACR04</p>
 <b>Senior Mentor:</b><p> </p>
@@ -62,20 +63,17 @@ logger                            1.0.0
 <p>Clone the repository:</p>
 <pre>
   <code>
-  git clone https://github.com/your-repository/boutiqa
+  git clone https://github.com/AAC-Open-Source-Pool/BOUTIQA
   </code>
 </pre>
 
-<p>Install Flutter and Dart SDK:</p>
-<pre>
-  <code>
-  # Install Flutter
+
+<p> <a href = "https://flutter.dev/docs/get-started/install">Install Flutter :</a></p>
+  <pre>
   https://flutter.dev/docs/get-started/install
+  </pre>
 
-  # Install Dart (comes with Flutter)
-  https://dart.dev/get-dart
-  </code>
-</pre>
+
 
 <p>Install the required dependencies (Flutter packages):</p>
 <pre>
