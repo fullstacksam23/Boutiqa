@@ -122,9 +122,8 @@ logger                            1.0.0
 </ul>
 <h2>Preview</h2>
 <p>Below is an example of the fall detection system in action:</p>
-https://github.com/AAC-Open-Source-Pool/Fall-Detection-and-Human-Activity-Recognition/blob/main/Screenshot%202024-11-17%20123749.png
 <div style="display: flex; align-items: center;">
-  <img src="https://github.com/AAC-Open-Source-Pool/Fall-Detection-and-Human-Activity-Recognition/blob/main/Screenshot%202024-11-17%20123749.png">
+  <img src="">
 </div>
 
 <h2>Contribution</h2>
