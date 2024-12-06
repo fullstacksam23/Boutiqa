@@ -23,37 +23,20 @@ class _UserCustomizationState extends State<UserCustomization> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Customize'),
-        leading: GestureDetector(
-          onTap: () {
-            // Add your back navigation logic here
-          },
-          child: Container(
-            margin: EdgeInsets.all(8.0), // Adjust for padding
-            decoration: BoxDecoration(
-              color: Colors.brown,
-              shape: BoxShape.circle,
-            ),
-            child: Center(
-              child: CustomPaint(
-                size: Size(24, 24),
-                painter: TrianglePainter(),
-              ),
-            ),
-          ),
-        ),
-      ),
       body: Padding(
         padding: EdgeInsets.all(16.0),
         child: Column(
+
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
-              'Choose your style',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-              textAlign: TextAlign.center,
+            Container(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Customize',
+                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+              ),
             ),
+            SizedBox(height: 10,),
             SizedBox(height: 20),
             buildDropdown('Style', styles, selectedStyle, (value) {
               setState(() => selectedStyle = value);

@@ -4,7 +4,7 @@ import 'package:boutiqa/pages/search.dart';
 import 'package:boutiqa/pages/designerprofile.dart';
 import 'package:boutiqa/pages/create_post.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import "package:boutiqa/pages/userorders.dart";
+import "package:boutiqa/pages/designerorders.dart";
 class DesignFirstPage extends StatefulWidget {
   @override
   _DesignFirstPageState createState() => _DesignFirstPageState();
@@ -32,7 +32,8 @@ class _DesignFirstPageState extends State<DesignFirstPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFFEDE1D3),
+        backgroundColor: Color(0xFFEDE3D8),
+        title: Text("Boutiqa"),
         actions: [Padding(
           padding: const EdgeInsets.all(8.0),
           child: IconButton(

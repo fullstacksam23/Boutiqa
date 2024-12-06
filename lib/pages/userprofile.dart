@@ -4,11 +4,16 @@ import 'package:boutiqa/pages/userorders.dart';
 import 'package:boutiqa/pages/chat.dart';
 import 'package:boutiqa/pages/edit_profile.dart';
 import 'package:boutiqa/pages/auth_page.dart';
+import 'package:boutiqa/pages/home.dart';
 
 class UserProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color.fromARGB(
+            255, 212, 206, 200),
+      ),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -22,157 +27,153 @@ class UserProfile extends StatelessWidget {
             ],
           ),
         ),
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Back Button
-                IconButton(
-                  icon: Icon(Icons.arrow_back, color: Color(0xFF7A4A39)),
-                  onPressed: () {},
-                ),
-                SizedBox(height: 20),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Back Button
 
-                // Profile Card with Gradient Background and Shadow
-                Container(
-                  padding: EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        Color.fromARGB(255, 117, 40, 40), // Start color
-                        Color.fromARGB(255, 110, 84, 84), // End color
-                      ],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                    ),
-                    borderRadius: BorderRadius.circular(20),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black26,
-                        blurRadius: 10,
-                        offset: Offset(0, 5),
-                      ),
+              SizedBox(height: 20),
+
+              // Profile Card with Gradient Background and Shadow
+              Container(
+                padding: EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Color.fromARGB(255, 117, 40, 40), // Start color
+                      Color.fromARGB(255, 110, 84, 84), // End color
                     ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
                   ),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Zayanya',
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                              ),
-                            ),
-                            Text(
-                              'zayanyawilliams@gmail.com',
-                              style: TextStyle(color: Colors.grey),
-                            ),
-                            SizedBox(height: 8),
-                            GestureDetector(
-                              onTap: () {},
-                              child: Row(
-                                children: [ElevatedButton(onPressed: (){
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => UpdateProfilePage()),);
-                                },
-                                  child: Text(
-                                  'Edit Profile',
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 16,
-                                  ),
-                                ),),
-
-                                  Icon(
-                                      Icons.chevron_right,
-                                      color: Color(0xFF7A4A39)),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(width: 16),
-                      CircleAvatar(
-                        radius: 30,
-                        backgroundImage: NetworkImage(
-                          'https://cdn1.iconfinder.com/data/icons/user-pictures/101/malecostume-512.png', // Replace with actual image URL
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-
-                SizedBox(height: 30),
-
-                // Favorites and Settings Buttons
-
-
-                SizedBox(height: 30),
-
-                // Options List
-                OptionButton(
-                  icon: Icons.contact_mail_outlined,
-                  label: 'Messenger',
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => ChatScreen()),);
-                  },
-                  buttonColor: Color.fromARGB(255, 230, 230, 230),
-                  textColor: Colors.black,
-                  iconColor: Colors.black,
-                ),
-                OptionButton(
-                  icon: Icons.shopping_bag_outlined,
-                  label: 'Your orders',
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => OrderHistoryPage()),);
-                  },
-                  buttonColor: Color.fromARGB(255, 231, 230, 230),
-                  textColor: Colors.black,
-                  iconColor: Colors.black,
-                ),
-                OptionButton(
-                  icon: Icons.share_outlined,
-                  label: 'Refer us',
-                  onPressed: () {},
-                  buttonColor: Color.fromARGB(255, 230, 230, 230),
-                  textColor: Colors.black,
-                  iconColor: Colors.black,
-                ),
-
-                Spacer(),
-
-                // Logout Button
-                Center(
-                  child: ElevatedButton.icon(
-                    onPressed: () async {
-                      await FirebaseAuth.instance.signOut();
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(builder: (context) => const AuthPage()),
-                      );
-                    },
-                    icon: Icon(Icons.logout),
-                    label: Text('Logout'),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Color.fromARGB(183, 113, 31, 31),
-                      foregroundColor: Color.fromARGB(255, 240, 237, 236),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      padding:
-                      EdgeInsets.symmetric(horizontal: 30, vertical: 12),
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black26,
+                      blurRadius: 10,
+                      offset: Offset(0, 5),
                     ),
+                  ],
+                ),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Zayanya',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
+                          Text(
+                            'zayanyawilliams@gmail.com',
+                            style: TextStyle(color: Colors.grey),
+                          ),
+                          SizedBox(height: 8),
+                          GestureDetector(
+                            onTap: () {},
+                            child: Row(
+                              children: [ElevatedButton(onPressed: (){
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => UpdateProfilePage()),);
+                              },
+                                child: Text(
+                                'Edit Profile',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 16,
+                                ),
+                              ),),
+
+                                Icon(
+                                    Icons.chevron_right,
+                                    color: Color(0xFF7A4A39)),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(width: 16),
+                    CircleAvatar(
+                      radius: 30,
+                      backgroundImage: NetworkImage(
+                        'https://cdn1.iconfinder.com/data/icons/user-pictures/101/malecostume-512.png', // Replace with actual image URL
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              SizedBox(height: 30),
+
+              // Favorites and Settings Buttons
+
+
+              SizedBox(height: 30),
+
+              // Options List
+              OptionButton(
+                icon: Icons.contact_mail_outlined,
+                label: 'Messenger',
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => ChatScreen()),);
+                },
+                buttonColor: Color.fromARGB(255, 230, 230, 230),
+                textColor: Colors.black,
+                iconColor: Colors.black,
+              ),
+              OptionButton(
+                icon: Icons.shopping_bag_outlined,
+                label: 'Your orders',
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => OrderHistoryPage()),);
+                },
+                buttonColor: Color.fromARGB(255, 231, 230, 230),
+                textColor: Colors.black,
+                iconColor: Colors.black,
+              ),
+              OptionButton(
+                icon: Icons.share_outlined,
+                label: 'Refer us',
+                onPressed: () {},
+                buttonColor: Color.fromARGB(255, 230, 230, 230),
+                textColor: Colors.black,
+                iconColor: Colors.black,
+              ),
+
+              Spacer(),
+
+              // Logout Button
+              Center(
+                child: ElevatedButton.icon(
+                  onPressed: () async {
+                    await FirebaseAuth.instance.signOut();
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(builder: (context) => const AuthPage()),
+                          (Route<dynamic> route) => false,
+                    );
+                  },
+                  icon: Icon(Icons.logout),
+                  label: Text('Logout'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color.fromARGB(183, 113, 31, 31),
+                    foregroundColor: Color.fromARGB(255, 240, 237, 236),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    padding:
+                    EdgeInsets.symmetric(horizontal: 30, vertical: 12),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

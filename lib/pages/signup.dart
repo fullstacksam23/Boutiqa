@@ -2,6 +2,7 @@ import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import "package:cloud_firestore/cloud_firestore.dart";
 
 class SignUp extends StatefulWidget {
   final Function()? onTap;
@@ -13,6 +14,7 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmpasswordController = TextEditingController();
   bool _obscurePassword = true;
@@ -34,11 +36,18 @@ class _SignUpState extends State<SignUp> {
         throw Exception("Passwords don't match");
       }
       if (_passwordController.text == _confirmpasswordController.text) {
-        await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: _usernameController.text,
+        UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: _emailController.text,
           password: _passwordController.text,
         );
+        String uid = userCredential.user!.uid;
 
+        await FirebaseFirestore.instance.collection('users').doc(uid).set({
+          'username': _usernameController.text,
+          'email': _emailController.text,
+          'profileType': selectedProfileType, // Store the selected profile type
+          'createdAt': FieldValue.serverTimestamp(), // Optional: store creation timestamp
+        });
         // Dismiss the loading dialog
         Navigator.pop(context);
 
@@ -98,7 +107,7 @@ class _SignUpState extends State<SignUp> {
               ),
               Padding(
                 padding: const EdgeInsets.all(20.0),
-                child: Image(image: AssetImage("assets/signup.png"), width: 250, height: 250,),
+                child: Image(image: AssetImage("assets/signup.png"), width: 200, height: 200,),
               ),
 
               Padding(
@@ -136,6 +145,20 @@ class _SignUpState extends State<SignUp> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     labelText: "username",
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: TextField(
+                  controller: _emailController,
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Color(0xffFFF1DE),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    labelText: "email",
                   ),
                 ),
               ),
@@ -236,7 +259,7 @@ class _SignUpState extends State<SignUp> {
 
 // class _SignupState extends State<Signup> {
 //   TextEditingController _nameController = TextEditingController();
-//   TextEditingController _usernameController = TextEditingController();
+//   TextEditingController _emailController = TextEditingController();
 //   TextEditingController _passwordController = TextEditingController();
 
 //   @override
@@ -308,7 +331,7 @@ class _SignUpState extends State<SignUp> {
 //                 Padding(
 //                   padding: const EdgeInsets.all(10.0),
 //                   child: TextField(
-//                     controller: _usernameController,
+//                     controller: _emailController,
 //                     decoration: InputDecoration(
 //                       filled: true,
 //                       fillColor: Color(0xffFFF1DE),

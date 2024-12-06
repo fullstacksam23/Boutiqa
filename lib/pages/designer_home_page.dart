@@ -15,6 +15,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        const Text("Unbox your fashion story!!",
+         ),
         Expanded(child: StreamBuilder(
           stream: FirebaseFirestore.instance
               .collection("Designer Posts")
@@ -26,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 itemCount: snapshot.data!.docs.length,
                   itemBuilder: (context, index){
                     final post = snapshot.data!.docs[index];
-                    return WallPosts(message: post["Message"], user: post["UserEmail"]);
+                    return WallPosts(message: post["Message"], user: post["Username"]);
                   }
               );
             }else if(snapshot.hasError){

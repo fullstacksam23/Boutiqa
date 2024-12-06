@@ -6,6 +6,10 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor:               Color.fromARGB(
+            255, 212, 206, 200),
+      ),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -26,10 +30,6 @@ class ProfileScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // Back Button
-                IconButton(
-                  icon: Icon(Icons.arrow_back, color: Color(0xFF7A4A39)),
-                  onPressed: () {},
-                ),
                 SizedBox(height: 20),
 
                 // Profile Card with Gradient Background and Shadow
@@ -144,9 +144,10 @@ class ProfileScreen extends StatelessWidget {
                   child: ElevatedButton.icon(
                     onPressed: () async {
                       await FirebaseAuth.instance.signOut();
-                      Navigator.pushReplacement(
+                      Navigator.pushAndRemoveUntil(
                         context,
                         MaterialPageRoute(builder: (context) => const AuthPage()),
+                            (Route<dynamic> route) => false,
                       );
                     },
                     icon: Icon(Icons.logout),

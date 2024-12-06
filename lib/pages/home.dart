@@ -1,13 +1,14 @@
 import 'package:boutiqa/pages/user_customization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:boutiqa/pages/homepage.dart';
+// import 'package:boutiqa/pages/homepage.dart';
 import 'package:boutiqa/pages/search.dart';
 import 'package:boutiqa/pages/gender.dart';
 import 'package:boutiqa/pages/user_activity.dart';
 import 'package:boutiqa/pages/userprofile.dart';
 import 'package:boutiqa/pages/cart.dart';
 import "package:boutiqa/pages/bag.dart";
+import 'package:boutiqa/pages/designer_home_page.dart';
 
 class firstpage extends StatefulWidget {
   @override
@@ -35,7 +36,8 @@ class _firstpageState extends State<firstpage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFFEDE1D3),
+        title: Text("Boutiqa"),
+        backgroundColor: Color(0xFFEDE3D8),
         actions: [Padding(
           padding: const EdgeInsets.all(8.0),
           child: IconButton(
