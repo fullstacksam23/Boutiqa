@@ -1,6 +1,53 @@
 import 'package:flutter/material.dart';
 
-class SearchPage extends StatelessWidget {
+class SearchPage extends StatefulWidget {
+  @override
+  _SearchPageState createState() => _SearchPageState();
+}
+
+class _SearchPageState extends State<SearchPage> {
+  TextEditingController _searchController = TextEditingController();
+  List<Map<String, String>> designers = [
+    {"name": "Manish Malhotra", "image": "assets/new1.jpeg"},
+    {"name": "Ritu Kumar", "image": "assets/new2.jpg"},
+    {
+      "name": "Sabyasachi Mukherjee",
+      "image":
+      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.meNv2L040GZISp6ZUFXqXQHaE8%26pid%3DApi&f=1"
+    },
+    {
+      "name": "Tarun Tahiliani",
+      "image":
+      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.MJp3QKUIQkmwXPc9lU8mTAHaLH%26pid%3DApi&f=1"
+    },
+    {
+      "name": "Payal Singhal",
+      "image":
+      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.Wwkj6mz7ZUkF8pBMY7UvIwHaHa%26pid%3DApi&f=1"
+    },
+  ];
+  List<Map<String, String>> filteredDesigners = [];
+
+  @override
+  void initState() {
+    super.initState();
+    filteredDesigners = designers;
+    _searchController.addListener(() {
+      setState(() {
+        filteredDesigners = designers
+            .where((designer) => designer['name']!
+            .toLowerCase()
+            .contains(_searchController.text.toLowerCase()))
+            .toList();
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -10,11 +57,12 @@ class SearchPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Search Bar and Profile Icon
+            // Search Bar
             Row(
               children: [
                 Expanded(
                   child: TextField(
+                    controller: _searchController,
                     decoration: InputDecoration(
                       hintText: "Search...",
                       filled: true,
@@ -41,105 +89,35 @@ class SearchPage extends StatelessWidget {
               height: 100,
               child: ListView(
                 scrollDirection: Axis.horizontal,
-                children: [
-                  // Designer 1
-                  Padding(
-                    padding: const EdgeInsets.only(right: 8.0),
-                    child: Column(
-                      children: [
-                        CircleAvatar(
-                          radius: 40,
-                          backgroundImage: AssetImage("assets/new1.jpeg")
+                children: filteredDesigners.map((designer) {
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ProfilePage(designer: designer),
                         ),
-                        Text(
-                          "James",
-                          style: TextStyle(fontSize: 12.0),
-                        ),
-                      ],
-                    ),
-                  ),
-                  // Designer 2
-                  Padding(
-                    padding: const EdgeInsets.only(right: 8.0),
-                    child: Column(
-                      children: [
-                        CircleAvatar(
-                          radius: 40,
-                          backgroundImage: AssetImage("assets/new2.jpg")
-                        ),
-                        Text(
-                          "Paula",
-                          style: TextStyle(fontSize: 12.0),
-                        ),
-                      ],
-                    ),
-                  ),
-                  // Designer 3
-                  Padding(
-                    padding: const EdgeInsets.only(right: 8.0),
-                    child: Column(
-                      children: [
-                        CircleAvatar(
-                          radius: 40,
-                          backgroundImage: NetworkImage(
-                            'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.meNv2L040GZISp6ZUFXqXQHaE8%26pid%3DApi&f=1&ipt=2530ac0d398af97a20adb2afc68b08fe3a902b3a68613f478e4c8fe84360a1b4&ipo=images', // Replace with designer image URL
-                          ),
-                        ),
-        
-                        Text(
-                          "Rahul",
-                          style: TextStyle(fontSize: 12.0),
-                        ),
-                      ],
-                    ),
-                  ),
-                  // Designer 4
-                  Padding(
-                    padding: const EdgeInsets.only(right: 8.0),
-                    child: Column(
-                      children: [
-                        CircleAvatar(
-                          radius: 40,
-                          backgroundImage: NetworkImage(
-                            'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.MJp3QKUIQkmwXPc9lU8mTAHaLH%26pid%3DApi&f=1&ipt=937349eb8751eac420ee451c07f2f11a04a96218cebb1d4d1fea1bc884fef83b&ipo=images', // Replace with designer image URL
-                          ),
-                        ),
-                        Text(
-                          "Rajesh",
-                          style: TextStyle(fontSize: 12.0),
-                        ),
-                      ],
-                    ),
-                  ),
-                  // Designer 5
-                  Padding(
-                    padding: const EdgeInsets.only(right: 8.0),
-                    child: Column(
-                      children: [
-                        CircleAvatar(
-                          radius: 40,
-                          backgroundImage: NetworkImage(
-                            'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.Wwkj6mz7ZUkF8pBMY7UvIwHaHa%26pid%3DApi&f=1&ipt=18821e6e0481097c7de0f35d500f73e8aebb79ae68523e209e1517e816b7d31f&ipo=images', // Replace with designer image URL
-                          ),
-                        ),
-                        Text(
-                          "Sam",
-                          style: TextStyle(fontSize: 12.0),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+                      );
+                    },
+                    child: _designerTile(designer['name']!, designer['image']!,
+                        isNetwork: designer['image']!.startsWith("http")),
+                  );
+                }).toList(),
               ),
             ),
             SizedBox(height: 24.0),
             // Product Display Section
+            Text(
+              "Our Collections",
+              style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 12.0),
             GridView.count(
               shrinkWrap: true,
               crossAxisCount: 2,
               crossAxisSpacing: 8.0,
               mainAxisSpacing: 8.0,
-              physics: ScrollPhysics(),
+              physics: NeverScrollableScrollPhysics(),
               children: List.generate(6, (index) {
                 return ClipRRect(
                   borderRadius: BorderRadius.circular(12.0),
@@ -166,303 +144,72 @@ class SearchPage extends StatelessWidget {
       ),
     );
   }
+
+  Widget _designerTile(String name, String imagePath,
+      {bool isNetwork = false}) {
+    return Padding(
+      padding: const EdgeInsets.only(right: 8.0),
+      child: Column(
+        children: [
+          CircleAvatar(
+            radius: 40,
+            backgroundImage: isNetwork
+                ? NetworkImage(imagePath)
+                : AssetImage(imagePath) as ImageProvider,
+          ),
+          Text(
+            name,
+            style: TextStyle(fontSize: 12.0),
+          ),
+        ],
+      ),
+    );
+  }
 }
 
-// import 'package:flutter/material.dart';
-//
-//
-// class SearchPage extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       backgroundColor: Colors.orange[50],
-//       appBar: AppBar(
-//         backgroundColor: Colors.transparent,
-//         elevation: 0,
-//         title: Text('BOUTIQA', style: TextStyle(color: Colors.black)),
-//         actions: [
-//           Padding(
-//             padding: EdgeInsets.only(right: 15.0),
-//             child: CircleAvatar(
-//               backgroundImage: AssetImage('assets/profile.jpg'), // Your profile image here
-//             ),
-//           )
-//         ],
-//       ),
-//       body: Padding(
-//         padding: const EdgeInsets.symmetric(horizontal: 16.0),
-//         child: Column(
-//           crossAxisAlignment: CrossAxisAlignment.start,
-//           children: [
-//             TextField(
-//               decoration: InputDecoration(
-//                 prefixIcon: Icon(Icons.search),
-//                 hintText: 'Search',
-//                 border: OutlineInputBorder(
-//                   borderRadius: BorderRadius.circular(10),
-//                   borderSide: BorderSide.none,
-//                 ),
-//                 filled: true,
-//                 fillColor: Colors.white,
-//               ),
-//             ),
-//             SizedBox(height: 16),
-//             Text(
-//               'LATEST FASHION',
-//               style: TextStyle(
-//                 fontWeight: FontWeight.bold,
-//                 fontSize: 18,
-//               ),
-//             ),
-//             SizedBox(height: 16),
-//             Row(
-//               children: [
-//                 Expanded(
-//                   child: Container(
-//                     height: 200,
-//                     decoration: BoxDecoration(
-//                       borderRadius: BorderRadius.circular(15),
-//                       image: DecorationImage(
-//                         image: AssetImage('assets/fashion1.jpg'), // First fashion image here
-//                         fit: BoxFit.cover,
-//                       ),
-//                     ),
-//                   ),
-//                 ),
-//                 SizedBox(width: 16),
-//                 Expanded(
-//                   child: Container(
-//                     height: 200,
-//                     decoration: BoxDecoration(
-//                       borderRadius: BorderRadius.circular(15),
-//                       image: DecorationImage(
-//                         image: AssetImage('assets/fashion2.jpg'), // Second fashion image here
-//                         fit: BoxFit.cover,
-//                       ),
-//                     ),
-//                   ),
-//                 ),
-//               ],
-//             ),
-//             SizedBox(height: 32),
-//             Text(
-//               'DESIGNERS OF THE WEEK',
-//               style: TextStyle(
-//                 fontWeight: FontWeight.bold,
-//                 fontSize: 18,
-//               ),
-//             ),
-//             SizedBox(height: 16),
-//             Row(
-//               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//               children: [
-//                 DesignerAvatar(imagePath: 'assets/designer1.jpg'),
-//                 DesignerAvatar(imagePath: 'assets/designer2.jpg'),
-//                 DesignerAvatar(imagePath: 'assets/designer3.jpg'),
-//               ],
-//             ),
-//           ],
-//         ),
-//       ),
-//
-//     );
-//   }
-// }
-//
-// class DesignerAvatar extends StatelessWidget {
-//   final String imagePath;
-//
-//   DesignerAvatar({required this.imagePath});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return CircleAvatar(
-//       radius: 40,
-//       backgroundImage: AssetImage(imagePath),
-//     );
-//   }
-// }
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-// // import 'package:flutter/material.dart';
-// // import 'package:carousel_slider/carousel_slider.dart';
-// //
-// // class Search extends StatefulWidget {
-// //   const Search({Key? key}) : super(key: key);
-// //
-// //   @override
-// //   _SearchState createState() => _SearchState();
-// // }
-// //
-// // class _SearchState extends State<Search> {
-// //   int _selectedIndex = 0;
-// //
-// //   static List<Widget> _widgetOptions = <Widget>[
-// //     ListView(
-// //       children: [
-// //         CarouselSliderPage(),
-// //       ],
-// //     ),
-// //     Center(child: Text('Search Page Content')),
-// //     AddPage(),
-// //     NotificationsPage(),
-// //     ProfilePage(),
-// //   ];
-// //
-// //   void _onItemTapped(int index) {
-// //     setState(() {
-// //       _selectedIndex = index;
-// //     });
-// //   }
-// //
-// //   @override
-// //   Widget build(BuildContext context) {
-// //     return Scaffold(
-// //       body: Container(
-// //         color: Color.fromARGB(255, 236, 182, 199), // Set your desired background color here
-// //         child: Column(
-// //           children: [
-// //             Padding(
-// //               padding: EdgeInsets.all(8.0),
-// //               child: TextField(
-// //                 decoration: InputDecoration(
-// //                   hintText: 'Search...',
-// //                   prefixIcon: Icon(Icons.search),
-// //                   border: OutlineInputBorder(
-// //                     borderRadius: BorderRadius.all(Radius.circular(8.0)),
-// //                   ),
-// //                   filled: true,
-// //                   fillColor: Color.fromARGB(100, 100, 100, 100),
-// //                 ),
-// //               ),
-// //             ),
-// //             Expanded(
-// //               child: _widgetOptions.elementAt(_selectedIndex),
-// //             ),
-// //           ],
-// //         ),
-// //       ),
-// //
-// //     );
-// //   }
-// // }
-// //
-// // class AddPage extends StatelessWidget {
-// //   const AddPage({Key? key}) : super(key: key);
-// //
-// //   @override
-// //   Widget build(BuildContext context) {
-// //     return Center(
-// //       child: Text('Add Page Content'),
-// //     );
-// //   }
-// // }
-// //
-// // class NotificationsPage extends StatelessWidget {
-// //   const NotificationsPage({Key? key}) : super(key: key);
-// //
-// //   @override
-// //   Widget build(BuildContext context) {
-// //     return Center(
-// //       child: Text('Notifications Page Content'),
-// //     );
-// //   }
-// // }
-// //
-// // class ProfilePage extends StatelessWidget {
-// //   const ProfilePage({Key? key}) : super(key: key);
-// //
-// //   @override
-// //   Widget build(BuildContext context) {
-// //     return Center(
-// //       child: Text('Profile Page Content'),
-// //     );
-// //   }
-// // }
-// //
-// //
-// // class CarouselSliderPage extends StatelessWidget {
-// //   @override
-// //   Widget build(BuildContext context) {
-// //     return Column(
-// //       children: [
-// //         CarouselSlider(
-// //           items: [
-// //             //1st Image of Slider
-// //             Container(
-// //               margin: EdgeInsets.all(3.0),
-// //               decoration: BoxDecoration(
-// //                 borderRadius: BorderRadius.circular(8.0),
-// //                 image: DecorationImage(
-// //                   image: NetworkImage("https://stylesatlife.com/wp-content/uploads/2018/04/30-Latest-and-Best-Designer-Dresses-for-Women-in-Fashion.jpg"),
-// //                   fit: BoxFit.cover,
-// //                 ),
-// //               ),
-// //             ),
-// //             //2nd Image of Slider
-// //             Container(
-// //               margin: EdgeInsets.all(6.0),
-// //               decoration: BoxDecoration(
-// //                 borderRadius: BorderRadius.circular(8.0),
-// //                 image: DecorationImage(
-// //                   image: NetworkImage("https://www.topteny.com/wp-content/uploads/2017/05/Elie-Saab-collection-675x1015.jpg"),
-// //                   fit: BoxFit.cover,
-// //                 ),
-// //               ),
-// //             ),
-// //             //3rd Image of Slider
-// //             Container(
-// //               margin: EdgeInsets.all(6.0),
-// //               decoration: BoxDecoration(
-// //                 borderRadius: BorderRadius.circular(8.0),
-// //                 image: DecorationImage(
-// //                   image: NetworkImage("https://stylesatlife.com/wp-content/uploads/2018/04/30-Latest-and-Best-Designer-Dresses-for-Women-in-Fashion.jpg"),
-// //                   fit: BoxFit.cover,
-// //                 ),
-// //               ),
-// //             ),
-// //             //4th Image of Slider
-// //             Container(
-// //               margin: EdgeInsets.all(6.0),
-// //               decoration: BoxDecoration(
-// //                 borderRadius: BorderRadius.circular(8.0),
-// //                 image: DecorationImage(
-// //                   image: NetworkImage("https://stylesatlife.com/wp-content/uploads/2018/04/30-Latest-and-Best-Designer-Dresses-for-Women-in-Fashion.jpg"),
-// //                   fit: BoxFit.cover,
-// //                 ),
-// //               ),
-// //             ),
-// //             //5th Image of Slider
-// //             Container(
-// //               margin: EdgeInsets.all(6.0),
-// //               decoration: BoxDecoration(
-// //                 borderRadius: BorderRadius.circular(8.0),
-// //                 image: DecorationImage(
-// //                   image: NetworkImage("https://stylesatlife.com/wp-content/uploads/2018/04/30-Latest-and-Best-Designer-Dresses-for-Women-in-Fashion.jpg"),
-// //                   fit: BoxFit.cover,
-// //                 ),
-// //               ),
-// //             ),
-// //           ],
-// //           options: CarouselOptions(
-// //             height: 250.0,
-// //             enlargeCenterPage: false,
-// //             aspectRatio: 4 / 3,
-// //             enableInfiniteScroll: true,
-// //             viewportFraction: 0.8,
-// //             autoPlay: false,
-// //           ),
-// //         ),
-// //       ],
-// //     );
-// //   }
-// // }
+class ProfilePage extends StatelessWidget {
+  final Map<String, String> designer;
+
+  ProfilePage({required this.designer});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(designer['name']!),
+        backgroundColor: Colors.blue,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            CircleAvatar(
+              radius: 60,
+              backgroundImage: designer['image']!.startsWith("http")
+                  ? NetworkImage(designer['image']!)
+                  : AssetImage(designer['image']!) as ImageProvider,
+            ),
+            SizedBox(height: 20),
+            Text(
+              designer['name']!,
+              style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 20),
+            Container(
+              padding: const EdgeInsets.all(16.0),
+              decoration: BoxDecoration(
+                color: Colors.grey[200],
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Text(
+                "${designer['name']} is one of the renowned fashion designers in India. Over the years, the label's aesthetic has aimed to bring together traditional Indian craftsmanship with contemporary silhouettes like gowns with intricate gold embroidery, cigarette pants paired with long jackets for women, voluminous lehengas worn with cropped blouses, or the use of non-traditional colors like royal blue, soft pink, maroon, etc., in bridal ensembles. The label's design language is claimed to exhibit glamour and is a reflection of modern India.",
+                style: TextStyle(fontSize: 16.0, color: Colors.black),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

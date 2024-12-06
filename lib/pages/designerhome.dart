@@ -5,6 +5,7 @@ import 'package:boutiqa/pages/designerprofile.dart';
 import 'package:boutiqa/pages/create_post.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import "package:boutiqa/pages/designerorders.dart";
+//import "package:boutiqa/pages/post_popup.dart";
 class DesignFirstPage extends StatefulWidget {
   @override
   _DesignFirstPageState createState() => _DesignFirstPageState();
@@ -42,6 +43,60 @@ class _DesignFirstPageState extends State<DesignFirstPage> {
               },
               icon: Icon(Icons.person, size: 35,)),
         )],
+      ),
+      drawer: Drawer(
+        child: ListView(
+          children: <Widget>[
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Color(0xFFEDE3D8),
+              ),
+              child: Text(
+                'BOUTIQA MENU',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 24,
+                ),
+              ),
+            ),
+
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text('Home'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.message),
+              title: Text('Messages'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.shopping_cart),
+              title: Text('Cart'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text('Profile'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.exit_to_app),
+              title: Text('Logout'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
       ),
       backgroundColor: Color(0xFFEDE3D8), // Background color
       body: _pages[_currentIndex], // Dynamic page switching
