@@ -112,7 +112,7 @@ logger                            1.0.0
 
 <h2>Preview</h2>
 <div style="display: flex; align-items: center;">
-  <img src="assets/preview.jpeg" alt="Boutiqa Logo" width="200">
+  <img src="assets/preview.jpeg" alt="Preview">
 </div>
 <h2>Contribution</h2>
 <p>We welcome contributions to improve the Project <br>
