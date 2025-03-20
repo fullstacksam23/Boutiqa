@@ -8,6 +8,7 @@
 - [Abstract](#Abstract) <br>
 - [Requirements](#requirements) <br>
 - [How to use](#How-to-use) <br>
+- [Preview](#previews) <br>
 - [Contribution](#contribution)
 
 <h2>Abstract</h2>
@@ -109,6 +110,10 @@ logger                            1.0.0
   <li>Make sure your emulator or physical device is connected to the internet for Firebase to work properly.</li>
 </ul>
 
+<h2>Preview</h2>
+<div style="display: flex; align-items: center;">
+  <img src="assets/preview.jpeg" alt="Boutiqa Logo" width="200">
+</div>
 <h2>Contribution</h2>
 <p>We welcome contributions to improve the Project <br>
 To contribute, follow these steps:
