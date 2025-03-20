@@ -1,27 +1,17 @@
 # BOUTIQA
+<div style="display: flex; align-items: center;">
+  <img src="assets/logo.png" alt="Boutiqa Logo" width="200">
+</div>
 
-<h2>Team Details</h2>
-<b>Team Number: </b> <p>24AACR04</p>
-<b>Senior Mentor:</b><p> </p>
-<b>Junior Mentor:</b><p> VENKAT VAMSHI</p>
-<b>Team Member 1:</b><p> DEVULAPALLY YASHWANTH</p>
-<b>Team Member 2:</b><p> SAMUEL OOMMEN</p>
-<b>Team Member 3:</b><p> VYSHNAVI</p>
-<b>Team Member 4:</b><p> VAISHNAVI</p>
-<b>Team Member 5:</b><p> VEDA ALLURI </p>
 
 ## Table of Contents
-- [Introduction](#introduction) <br>
+- [Abstract](#Abstract) <br>
 - [Requirements](#requirements) <br>
 - [How to use](#How-to-use) <br>
-- [Preview](#previews)
 - [Contribution](#contribution)
 
-<h2>Introduction</h2>
-<p> 
-it is a clothing app that connects users and designers, on a single platform.Users can browse, save and shop outfits while maintaining personalised profiles, designers can showcase collections, engage with followers, and sell directly.The app simplifies fashion delivery and shopping, creating an interactive and seamless experience.
-</p>
-
+<h2>Abstract</h2>
+<p>Boutiqa is an innovative fashion platform that seamlessly connects users and designers, creating a dynamic space for browsing, showcasing, and purchasing outfits. The app empowers designers to display their collections, engage with followers, and sell directly to fashion enthusiasts. Users can explore curated styles, save their favorite outfits, and make secure purchases—all in one place.</p>
 
 <h2>Requirements</h2>
 
@@ -73,8 +63,6 @@ logger                            1.0.0
   https://flutter.dev/docs/get-started/install
   </pre>
 
-
-
 <p>Install the required dependencies (Flutter packages):</p>
 <pre>
   <code>
@@ -120,11 +108,6 @@ logger                            1.0.0
   <li>Verify your <code>pubspec.yaml</code> file includes the required Firebase libraries like <code>firebase_auth</code>, <code>cloud_firestore</code>, etc.</li>
   <li>Make sure your emulator or physical device is connected to the internet for Firebase to work properly.</li>
 </ul>
-<h2>Preview</h2>
-<p>Below is an example of the fall detection system in action:</p>
-<div style="display: flex; align-items: center;">
-  <img src="">
-</div>
 
 <h2>Contribution</h2>
 <p>We welcome contributions to improve the Project <br>
