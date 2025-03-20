@@ -8,24 +8,6 @@ class ChooseDesignerScreen extends StatelessWidget {
         title: Text('Customize'),
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: GestureDetector(
-          onTap: () {
-            // Add your back navigation logic here
-          },
-          child: Container(
-            margin: EdgeInsets.all(8.0), // Adjust for padding
-            decoration: BoxDecoration(
-              color: Colors.brown,
-              shape: BoxShape.circle,
-            ),
-            child: Center(
-              child: CustomPaint(
-                size: Size(16, 16), // Adjust the size of the triangle
-                painter: TrianglePainter(),
-              ),
-            ),
-          ),
-        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

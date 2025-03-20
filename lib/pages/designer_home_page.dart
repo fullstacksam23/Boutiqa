@@ -26,6 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           const Text(
             "Unbox your fashion story!!",
+            style: TextStyle(fontSize: 18),
           ),
           Expanded(
             child: StreamBuilder(

@@ -25,51 +25,55 @@ class _UserCustomizationState extends State<UserCustomization> {
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.all(16.0),
-        child: Column(
-
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Customize',
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+        child: SingleChildScrollView(
+          child: Column(
+          
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Customize',
+                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                ),
               ),
-            ),
-            SizedBox(height: 10,),
-            SizedBox(height: 20),
-            buildDropdown('Style', styles, selectedStyle, (value) {
-              setState(() => selectedStyle = value);
-            }),
-            buildDropdown('Fabric', fabrics, selectedFabric, (value) {
-              setState(() => selectedFabric = value);
-            }),
-            buildDropdown('Pattern', patterns, selectedPattern, (value) {
-              setState(() => selectedPattern = value);
-            }),
-            buildDropdown('Neck', necks, selectedNeck, (value) {
-              setState(() => selectedNeck = value);
-            }),
-            buildDropdown('Sleeves', sleeves, selectedSleeves, (value) {
-              setState(() => selectedSleeves = value);
-            }),
-            SizedBox(height: 20),
-            TextField(
-              controller: additionalChangesController,
-              maxLines: 3,
-              decoration: InputDecoration(
-                labelText: 'Additional changes',
-                border: OutlineInputBorder(),
+              SizedBox(height: 10,),
+          
+          
+              SizedBox(height: 20),
+              buildDropdown('Style', styles, selectedStyle, (value) {
+                setState(() => selectedStyle = value);
+              }),
+              buildDropdown('Fabric', fabrics, selectedFabric, (value) {
+                setState(() => selectedFabric = value);
+              }),
+              buildDropdown('Pattern', patterns, selectedPattern, (value) {
+                setState(() => selectedPattern = value);
+              }),
+              buildDropdown('Neck', necks, selectedNeck, (value) {
+                setState(() => selectedNeck = value);
+              }),
+              buildDropdown('Sleeves', sleeves, selectedSleeves, (value) {
+                setState(() => selectedSleeves = value);
+              }),
+              SizedBox(height: 20),
+              TextField(
+                controller: additionalChangesController,
+                maxLines: 3,
+                decoration: InputDecoration(
+                  labelText: 'Additional changes',
+                  border: OutlineInputBorder(),
+                ),
               ),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => ChooseDesignerScreen()),);
-              },
-              child: Text('Confirm'),
-            ),
-          ],
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => ChooseDesignerScreen()),);
+                },
+                child: Text('Confirm'),
+              ),
+            ],
+          ),
         ),
       ),
     );
